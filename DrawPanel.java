@@ -13,8 +13,8 @@ import javax.swing.border.Border;
 /**
  * Panel in which drawing occurs.
  * 
- * @author CS2334. Modified by: ?????
- * @version 2018-04-16
+ * @author CS2334. Modified by: Braxton Wilkinson
+ * @version 2019-11-19
  */
 
 public class DrawPanel extends JPanel
@@ -79,11 +79,11 @@ public class DrawPanel extends JPanel
                         // to be the index in the shapeList
                         shapeIndex = i;
 
-                        // TODO: find if the shape is filled
+                        // find if the shape is filled
                         // TODO: set fillBox to match the status of the shape
                         boolean fillBox = shapeList.get(shapeIndex).isFilled();
 
-                        // TODO: get color of the shape
+                        // get color of the shape
                         // TODO: set the color of the frame to match the shape's color
                         Color color = shapeList.get(shapeIndex).getColor();
                         
@@ -203,6 +203,7 @@ public class DrawPanel extends JPanel
             if (frame.isOval())
             {
                 // TODO: create and return an Oval
+            	return new Oval(randPoint, width, height, , );
                 
             }
             else if (frame.isRectangle())

@@ -24,8 +24,8 @@ import javax.swing.border.TitledBorder;
  * This class extends JFrame and contains the main method. The frame includes
  * all the key components for our GUI.
  * 
- * @author CS2334. Modified by: ?????
- * @version 2018-04-16
+ * @author CS2334. Modified by: Braxton Wilkinson
+ * @version 2019-11-19
  */
 
 public class DrawFrame extends JFrame
@@ -461,7 +461,8 @@ public class DrawFrame extends JFrame
      */
     public boolean isOval()
     {
-        // TODO: implement this => check info on the correct graphical component.
+        // implement this => check info on the correct graphical component.
+    	return this.controlPanel.ovalButton.isSelected();
     }
 
     /**
@@ -471,7 +472,8 @@ public class DrawFrame extends JFrame
      */
     public boolean isRectangle()
     {
-        // TODO: implement this => check info on the correct graphical component.
+        // implement this => check info on the correct graphical component.
+    	return this.controlPanel.rectangleButton.isSelected();
     }
 
     /**
@@ -481,7 +483,8 @@ public class DrawFrame extends JFrame
      */
     public boolean isTriangle()
     {
-        // TODO: implement this => check info on the correct graphical component.
+        // implement this => check info on the correct graphical component.
+    	return this.controlPanel.triangleButton.isSelected();
     }
 
     /**
@@ -491,7 +494,8 @@ public class DrawFrame extends JFrame
      */
     public boolean isDiamond()
     {
-        // TODO: implement this => check info on the correct graphical component.
+        // implement this => check info on the correct graphical component.
+    	return this.controlPanel.diamondButton.isSelected();
     }
 
     /**
@@ -502,6 +506,7 @@ public class DrawFrame extends JFrame
     public boolean isFilled()
     {
         // TODO: implement this => check info on the correct graphical component.
+    	return this.controlPanel.fillBox.isSelected();
     }
 
     /**
