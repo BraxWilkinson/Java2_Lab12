@@ -228,7 +228,7 @@ public class DrawFrame extends JFrame
                     
                     // If we're in edit mode, set the color of the chosen shape
                     // to that of the chosen color (You'll need to look at the code drawPanel provides)
-                    if (editFlag==true) {
+                    if (isEditing()) {
                     	setColor(color);
                     }
                     
@@ -505,7 +505,7 @@ public class DrawFrame extends JFrame
      */
     public boolean isFilled()
     {
-        // TODO: implement this => check info on the correct graphical component.
+        // implement this => check info on the correct graphical component.
     	return this.controlPanel.fillBox.isSelected();
     }
 

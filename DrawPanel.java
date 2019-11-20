@@ -81,11 +81,11 @@ public class DrawPanel extends JPanel
 
                         // find if the shape is filled
                         // TODO: set fillBox to match the status of the shape
-                        boolean fillBox = shapeList.get(shapeIndex).isFilled();
+                        boolean filledBox = shapeList.get(shapeIndex).isFilled();
 
                         // get color of the shape
-                        // TODO: set the color of the frame to match the shape's color
-                        Color color = shapeList.get(shapeIndex).getColor();
+                        // set the color of the frame to match the shape's color
+                        frame.getControlPanel().setColor(shapeList.get(shapeIndex).getColor());
                         
                         // break out of the for loop
                         break;
@@ -110,7 +110,7 @@ public class DrawPanel extends JPanel
                                                         .getActionPanel(),
                                         "Delete chosen shape?", "",
                                         JOptionPane.YES_NO_OPTION);
-                        // TODO: Check answer, remove shape if yes 
+                        // Check answer, remove shape if yes 
                         // You may need to review JOptionPane documentation
                         if (ret == JOptionPane.YES_OPTION) {
                         	shapeList.remove(shapeIndex);
@@ -140,19 +140,20 @@ public class DrawPanel extends JPanel
                 // Yes - we are currently drawing
 
                 // Coordinates of the cursor (x0/y0 are already being used, what should you use?)
-                // TODO
+                x1 = e.getX();
+                y1 = e.getY();
 
                 // Indicate that we are no longer drawing
-                // TODO
+                drawingFlag = false;
 
                 // We no longer need a temporary shape (set to null)
-                // TODO
+                tempShape=null;
 
                 // Create the shape given the current state
-                // TODO
+                tempShape = createShape();
 
                 // Add the shape to the panel list if the shape exists
-                // TODO
+                shapeList.add(tempShape);
                 
                 //repaint
                 repaint();
@@ -174,10 +175,11 @@ public class DrawPanel extends JPanel
             {
                 // Yes
                 // Note the current coordinates
-                // TODO
+                x1 = e.getX();
+                y1 = e.getY();
 
                 // Create a temporary shape (look at what variables we have)
-                // TODO
+                tempShape = createShape();
 
                 // repaint
                 repaint();
@@ -199,26 +201,29 @@ public class DrawPanel extends JPanel
             int height = ydist*2;
 
             // Create a new object, depending on what is selected
-            // TODO give them diamond, comments else
+            // give them diamond, comments else
             if (frame.isOval())
             {
-                // TODO: create and return an Oval
-            	return new Oval(randPoint, width, height, , );
+                // create and return an Oval
+            	return new Oval(frame.getLocation(), width, height, frame.getColor(), frame.isFilled());
                 
             }
             else if (frame.isRectangle())
             {
-                // TODO: create and return a Rectangle
+                // create and return a Rectangle
+            	return new Rectangle(frame.getLocation(), width, height, frame.getColor(), frame.isFilled());
                 
             }
             else if (frame.isTriangle())
             {
-                // TODO: create and return a Triangle
+                // create and return a Triangle
+            	return new RightTriangle(frame.getLocation(), width, height, frame.getColor(), frame.isFilled());
                 
             }
             else if (frame.isDiamond())
             {
-                // TODO: create and return diamond
+                // create and return diamond
+            	return new Diamond(frame.getLocation(), width, height, frame.getColor(), frame.isFilled());
                 
             }
             // Should not get here, but be safe
@@ -276,10 +281,15 @@ public class DrawPanel extends JPanel
     {
         super.paintComponent(g);
 
-        // TODO: Draw each shape on the list
+        // Draw each shape on the list
+        for (int i=0; i <shapeList.size(); i++) {
+        	shapeList.get(i).draw(g);
+        }
         
-        // TODO: If there is a temporary shape, then draw it, too
-        
+        // If there is a temporary shape, then draw it, too
+        if (!tempShape.equals(null)) {
+        	tempShape.draw(g);
+        }
     }
 
     /**
