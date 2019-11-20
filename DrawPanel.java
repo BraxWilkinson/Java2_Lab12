@@ -81,7 +81,7 @@ public class DrawPanel extends JPanel
 
                         // find if the shape is filled
                         // TODO: set fillBox to match the status of the shape
-                        boolean filledBox = shapeList.get(shapeIndex).isFilled();
+                        frame.controlPanel.fillBox.setSelected(shapeList.get(shapeIndex).isFilled());
 
                         // get color of the shape
                         // set the color of the frame to match the shape's color
@@ -95,7 +95,7 @@ public class DrawPanel extends JPanel
             else if (frame.isDeleting()) // are we in delete mode?
             {
                 // create point where the mouse was clicked
-            	 Point point = new Point(x0,y0);
+            	Point point = new Point(x0,y0);
                 
                 // find which shape was clicked
                 // loop through shapes in stack fashion, LIFO
