@@ -216,21 +216,25 @@ public class DrawFrame extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     // Prompt the user for a color (use JColorChooser for this.)
-                    // TODO
+                	JColorChooser colorPrompt = new JColorChooser(color);
                     
                     // If a valid color was chosen, assign it to color (the variable).
-                    // TODO
+                    if (colorPrompt.isDisplayable()) {
+                    	color = colorPrompt.getColor();
+                    }
                     
                     // Set the background of the button (colorChooser) to match the color chosen
-                    // TODO
+                    colorChooser.setBackground(color);
                     
                     // If we're in edit mode, set the color of the chosen shape
                     // to that of the chosen color (You'll need to look at the code drawPanel provides)
-                    // TODO
+                    if (editFlag==true) {
+                    	setColor(color);
+                    }
                     
                     // Repaint the frame and panel. A bit more info is on page 5 of:
                     // https://web.stanford.edu/class/archive/cs/cs108/cs108.1092/handouts/27PaintRepaint.pdf
-                    // TODO
+                    drawPanel.repaint();
                 }
             });
 
@@ -370,19 +374,23 @@ public class DrawFrame extends JFrame
 
                     if (randShapeChoice == 0) // Diamond
                     {
-                        // TODO: create a diamond with the random values and add it to the drawpanel.
+                        // create a diamond with the random values and add it to the drawpanel.
+                    	drawPanel.addShape(new Diamond(randPoint, randVal1, randVal2, randColor, randFill));
                     }
                     else if (randShapeChoice == 1) // Rectangle
                     {
-                        // TODO: create a rectangle with the random values and add it to the drawpanel.
+                        // create a rectangle with the random values and add it to the drawpanel.
+                    	drawPanel.addShape(new Rectangle(randPoint, randVal1, randVal2, randColor, randFill));
                     }
                     else if (randShapeChoice == 2) // Oval
                     {
-                        // TODO: create a oval with the random values and add it to the drawpanel.
+                        // create a oval with the random values and add it to the drawpanel.
+                    	drawPanel.addShape(new Oval(randPoint, randVal1, randVal2, randColor, randFill));
                     }
                     else // Triangle
                     {
-                        // TODO: create a triangle with the random values and add it to the drawpanel.
+                        // create a triangle with the random values and add it to the drawpanel.
+                    	drawPanel.addShape(new RightTriangle(randPoint, randVal1, randVal2, randColor, randFill));
                     }
                     // repaint panel
                     drawPanel.repaint();
