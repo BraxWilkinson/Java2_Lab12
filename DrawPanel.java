@@ -71,7 +71,6 @@ public class DrawPanel extends JPanel
 
                 // find which shape was clicked
                 // loop through shapes in stack fashion, LIFO
-                // TODO
                 for (int i = 0; i < shapeList.size(); i++)
                 {
                     if (shapeList.get(i).contains(point))
@@ -86,22 +85,23 @@ public class DrawPanel extends JPanel
 
                         // TODO: get color of the shape
                         // TODO: set the color of the frame to match the shape's color
-                        shapeList.get(shapeIndex).getColor();
+                        Color color = shapeList.get(shapeIndex).getColor();
                         
-                        // TODO: break out of the for loop
+                        // break out of the for loop
                         break;
                     }
                 }
             }
             else if (frame.isDeleting()) // are we in delete mode?
             {
-                // TODO: create point where the mouse was clicked
+                // create point where the mouse was clicked
+            	 Point point = new Point(x0,y0);
                 
                 // find which shape was clicked
                 // loop through shapes in stack fashion, LIFO
-                for (//TODO)
+                for (int i = 0; i < shapeList.size(); i++)
                 {
-                    if (//TODO)
+                    if (shapeList.get(i).contains(point))
                     {
                         // If the shape contains the point, prompt the user for
                         // a confirmation to delete
@@ -112,14 +112,17 @@ public class DrawPanel extends JPanel
                                         JOptionPane.YES_NO_OPTION);
                         // TODO: Check answer, remove shape if yes 
                         // You may need to review JOptionPane documentation
-
-                        // TODO: break out of for loop
+                        if (ret == JOptionPane.YES_OPTION) {
+                        	shapeList.remove(shapeIndex);
+                        }
+                        // break out of for loop
+                        break;
                     }
                 }
             }
             else // we're drawing a shape
             {
-                // TODO: Indicate that drawing of a shape has begun (look at what flags may be set)
+                drawingFlag=true;
             }
         }
 
